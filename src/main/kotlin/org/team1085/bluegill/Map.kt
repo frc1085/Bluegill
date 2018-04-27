@@ -5,10 +5,9 @@ class Map {
 
     // Magic Numbers
     public val INPUT_SCALE = 3.0
-    public val DRIVE_WIDTH = 3.5
-    public val WHEEL_WIDTH = 3.4
+    public val DRIVE_WIDTH = 0.635
+    public val WHEEL_WIDTH = 0.1524
     public val TICKS_PER_REV = 4096
-    public val TICK_DIST = 0.1524
 
     // CAN Channels
     public val RIGHT_CIM_A = 62

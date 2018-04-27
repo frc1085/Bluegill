@@ -24,8 +24,8 @@ class FollowPath (waypoints: Array<Waypoint>) : Command () {
 
   override fun initialize () {
     Robot.chassis.resetEncoders()
-    leftFollower.configureEncoder(Robot.chassis.getLeft(), Map.TICKS_PER_REV, Map.TICK_DIST)
-    rightFollower.configureEncoder(Robot.chassis.getRight(), Map.TICKS_PER_REV, Map.TICK_DIST)
+    leftFollower.configureEncoder(Robot.chassis.getLeft(), Map.TICKS_PER_REV, Map.WHEEL_WIDTH)
+    rightFollower.configureEncoder(Robot.chassis.getRight(), Map.TICKS_PER_REV, Map.WHEEL_WIDTH)
   }
 
   override fun execute () {
