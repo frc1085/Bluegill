@@ -1,0 +1,46 @@
+plugins {
+  id "org.jetbrains.kotlin.jvm" version "1.2.10"
+  id "jaci.openrio.gradle.GradleRIO" version "2018.01.11"
+}
+
+// Set team number and robot name here
+def TEAM = 1085
+def NAME = "bluegill"
+
+deploy {
+  targets {
+    target("roborio", jaci.openrio.gradle.frc.RoboRIO) { team = TEAM }
+  }
+
+  artifacts {
+    artifact('frcKotlin', jaci.openrio.gradle.frc.FRCJavaArtifact) {
+      targets << "roborio"
+      jar = 'jar'
+    }
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile wpilib()
+  compile ctre()
+  compile navx()
+  compile pathfinder()
+  compile "org.jetbrains.kotlin:kotlin-stdlib"
+}
+
+jar {
+  from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  manifest jaci.openrio.gradle.GradleRIOPlugin.javaManifest("org.team${TEAM}.${NAME}.Robot")
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '4.2.1'
+}
+
+telemetry {
+  reportTelemetry = false
+}
