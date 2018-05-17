@@ -4,10 +4,22 @@ class Map {
   companion object {
 
     // Magic Numbers
-    public val INPUT_SCALE = 3.0
-    public val DRIVE_WIDTH = 0.635
+    public val INPUT_SCALE = 1.0
+    public val DRIVE_WIDTH = 0.5588
     public val WHEEL_WIDTH = 0.1524
     public val TICKS_PER_REV = 4096
+
+    // Tuning Constants
+    public val MAX_ACC = 1.0
+    public val MAX_VEL = 2.0
+    public val MAX_JRK = 16.0
+    public val TIMESTP = 0.02
+
+    public val KP = 0.4
+    public val KI = 0.0
+    public val KD = 0.0
+    public val KA = 0.05
+    public val KV = 1.0 / MAX_VEL
 
     // CAN Channels
     public val RIGHT_CIM_A = 62

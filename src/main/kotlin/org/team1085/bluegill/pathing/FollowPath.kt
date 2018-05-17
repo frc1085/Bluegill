@@ -13,7 +13,7 @@ class FollowPath (waypoints: Array<Waypoint>) : Command () {
 
   init { requires(Robot.chassis) }
 
-  private val config = Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.05, 1.7, 2.0, 60.0)
+  private val config = Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, Map.TIMESTP, Map.MAX_VEL, Map.MAX_ACC, Map.MAX_JRK)
   private val center = Pathfinder.generate(waypoints, config)
   private val modify = TankModifier(center).modify(Map.DRIVE_WIDTH)
 
@@ -24,6 +24,8 @@ class FollowPath (waypoints: Array<Waypoint>) : Command () {
 
   override fun initialize () {
     Robot.chassis.resetEncoders()
+    leftFollower.configurePIDVA(Map.KP, Map.KI, Map.KD, Map.KV, Map.KA)
+    rightFollower.configurePIDVA(Map.KP, Map.KI, Map.KD, Map.KV, Map.KA)
     leftFollower.configureEncoder(Robot.chassis.getLeft(), Map.TICKS_PER_REV, Map.WHEEL_WIDTH)
     rightFollower.configureEncoder(Robot.chassis.getRight(), Map.TICKS_PER_REV, Map.WHEEL_WIDTH)
   }

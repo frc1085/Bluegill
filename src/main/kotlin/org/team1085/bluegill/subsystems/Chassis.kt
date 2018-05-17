@@ -56,7 +56,7 @@ class Chassis : Subsystem () {
     leftCimC.set(ControlMode.PercentOutput, 0.0)
   }
 
-  public fun getRight () = rightCimA.getSelectedSensorPosition(0)
+  public fun getRight () = -rightCimA.getSelectedSensorPosition(0)
   public fun getLeft () = leftCimA.getSelectedSensorPosition(0)
 
   public fun resetEncoders () {

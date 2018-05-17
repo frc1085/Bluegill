@@ -13,7 +13,7 @@ class Robot : IterativeRobot () {
   }
 
   override fun robotInit () {}
-  override fun autonomousInit () {}
+  override fun autonomousInit () = dashboard.selectAuto().start()
   override fun teleopInit () {}
 
   override fun autonomousPeriodic () = Scheduler.getInstance().run()
