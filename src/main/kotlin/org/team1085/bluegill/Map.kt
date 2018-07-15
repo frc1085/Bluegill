@@ -10,16 +10,17 @@ class Map {
     public val TICKS_PER_REV = 4096
 
     // Tuning Constants
-    public val MAX_ACC = 1.0
-    public val MAX_VEL = 2.0
-    public val MAX_JRK = 16.0
+    public val MAX_ACC = 10.0
+    public val MAX_VEL = 10.0
+    public val MAX_JRK = 84.0
     public val TIMESTP = 0.02
 
-    public val KP = 0.4
-    public val KI = 0.0
-    public val KD = 0.0
+    public val KP = 7.0
+    public val KI = 0.00
+    public val KD = 0.00
     public val KA = 0.05
-    public val KV = 1.0 / MAX_VEL
+    public val KV = 1.00 / MAX_VEL
+
 
     // CAN Channels
     public val RIGHT_CIM_A = 62

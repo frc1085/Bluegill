@@ -14,7 +14,7 @@ class Robot : IterativeRobot () {
 
   override fun robotInit () {}
   override fun autonomousInit () = dashboard.selectAuto().start()
-  override fun teleopInit () {}
+  override fun teleopInit () = Scheduler.getInstance().removeAll()
 
   override fun autonomousPeriodic () = Scheduler.getInstance().run()
   override fun teleopPeriodic () = Scheduler.getInstance().run()

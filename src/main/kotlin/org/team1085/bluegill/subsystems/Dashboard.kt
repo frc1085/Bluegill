@@ -10,6 +10,7 @@ import edu.wpi.first.networktables.NetworkTableInstance
 import org.team1085.bluegill.pathing.FollowPath
 import org.team1085.bluegill.pathing.Paths
 import org.team1085.bluegill.commands.EncoderTest
+import org.team1085.bluegill.commands.TestWheels
 import org.team1085.bluegill.commands.Logging
 import org.team1085.bluegill.Map
 
@@ -27,6 +28,6 @@ class Dashboard : Subsystem () {
 
   override fun initDefaultCommand () = setDefaultCommand(Logging())
 
-  public fun selectAuto () = FollowPath(Paths.C_CURVE)
+  public fun selectAuto () = FollowPath(Paths.S_CURVE)
 
 }

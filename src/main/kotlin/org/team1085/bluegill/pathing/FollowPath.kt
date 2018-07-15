@@ -13,7 +13,7 @@ class FollowPath (waypoints: Array<Waypoint>) : Command () {
 
   init { requires(Robot.chassis) }
 
-  private val config = Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, Map.TIMESTP, Map.MAX_VEL, Map.MAX_ACC, Map.MAX_JRK)
+  private val config = Trajectory.Config(Trajectory.FitMethod.HERMITE_QUINTIC, Trajectory.Config.SAMPLES_LOW, Map.TIMESTP, Map.MAX_VEL, Map.MAX_ACC, Map.MAX_JRK)
   private val center = Pathfinder.generate(waypoints, config)
   private val modify = TankModifier(center).modify(Map.DRIVE_WIDTH)
 
@@ -34,8 +34,8 @@ class FollowPath (waypoints: Array<Waypoint>) : Command () {
     val leftSpeed = leftFollower.calculate(Robot.chassis.getLeft())
     val rightSpeed = rightFollower.calculate(Robot.chassis.getRight())
 
-    Robot.chassis.setLeftRaw(leftSpeed)
-    Robot.chassis.setRightRaw(rightSpeed)
+    Robot.chassis.setLeftRaw(leftSpeed * 0.3)
+    Robot.chassis.setRightRaw(rightSpeed * 0.3)
   }
 
   override fun interrupted () = Robot.chassis.fullStop()

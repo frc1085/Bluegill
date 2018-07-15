@@ -13,7 +13,7 @@ class ArcadeDrive : Command () {
     val x = Robot.dashboard.firstDriver.getX()
     val y = Robot.dashboard.firstDriver.getY()
 
-    Robot.chassis.setLeftRaw(Math.pow(y - x, Map.INPUT_SCALE))
-    Robot.chassis.setRightRaw(Math.pow(y + x, Map.INPUT_SCALE))
+    Robot.chassis.setLeftRaw(Math.pow(-y - x, Map.INPUT_SCALE))
+    Robot.chassis.setRightRaw(Math.pow(-y + x, Map.INPUT_SCALE))
   }
 }
